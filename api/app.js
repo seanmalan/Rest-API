@@ -1,8 +1,7 @@
-// const db = require("./db");
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const router = express.Router();
+const router = require("./routes/jobs");
 
 
 app.use(cors());
@@ -16,6 +15,8 @@ app.get("/test", async (req, res, next) => {
     next(error);
   }
 });
+
+app.use("/jobs", router);
 
 
 module.exports = app;
