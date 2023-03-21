@@ -1,0 +1,2 @@
+INSERT INTO jobs (id, title, clientName, location, description, clientPhoneNumber, jobStatus, jobDate) VALUES (1, 'Job 1', 'Client 1', 'Location 1', 'Description 1', '1234567890', 'pending', '2019-01-01',
+2, "build a fence", "John Smith", "123 Main St", "build a fence", "1234567890", "pending", "2019-01-01");
