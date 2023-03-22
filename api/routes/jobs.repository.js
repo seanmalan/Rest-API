@@ -9,7 +9,7 @@ module.exports = {
       if (jobs.rows.length === 0) {
         throw Error("No jobs found");
       }
-      
+
       return jobs.rows;
     } catch (error) {
       throw Error(error);
@@ -40,5 +40,17 @@ module.exports = {
     } catch (error) {
       throw Error(error);
     }
-  }
+  },
+
+  updateJob: async (id, job) => {
+    try {
+      const updatedJob = await db.query(
+        "UPDATE jobs SET jobtitle = $1, clientName = $2, location = $3, description = $4, clientPhoneNumber = $5, jobstatus = $6, userId = $7, jobDate = $8 WHERE id = $9 RETURNING *",
+        [job.jobtitle, job.clientName, job.location, job.description, job.clientPhoneNumber, job.jobstatus, job.userId, job.jobDate, id]
+      );
+      return updatedJob.rows[0];
+    } catch (error) {
+      throw Error(error);
+    }
+  },
 };

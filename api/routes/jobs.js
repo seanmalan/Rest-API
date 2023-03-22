@@ -40,6 +40,16 @@ celebrate({
 });
 
 
+router.put("/:id", async (req, res, next) => {
+  try {
+    const job = await jobsRepository.updateJob(req.params.id, req.body);
+    res.send(job).status(200);
+  } catch (error) {
+    next(error);
+  }
+});
+
+
 
 
 router.get("/", async (req, res, next) => {
