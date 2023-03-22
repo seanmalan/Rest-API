@@ -113,6 +113,18 @@ describe("GET a job by id", () => {
     expect(getAllJobs).not.toHaveBeenCalled();
   });
 
+  test('should return an empty response message', async () => { 
+
+    const noJob = {};
+    getJobById.mockImplementation(() => noJob);
+
+    const response = await request(app).get('/jobs/12');
+    
+    expect(response.body).toEqual(noJob);
+    expect(response.statusCode).toBe(200);
+    expect(getAllJobs).not.toHaveBeenCalled();
+   })
+
   test("should return a 404 if wrong url", async () => {
     const noJob = {};
     getJobById.mockImplementation(() => noJob);

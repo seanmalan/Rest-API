@@ -14,7 +14,12 @@ module.exports = {
   getJobById: async (id) => {
     try {
       const job = await db.query("SELECT * FROM jobs WHERE id = $1", [id]);
+      if (job.rows.length === 0) {
+        throw Error("No job found");
+      }
       return job.rows[0];
+      
+
     } catch (error) {
       throw Error(error);
     }
