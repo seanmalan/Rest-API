@@ -5,6 +5,11 @@ module.exports = {
   getAllJobs: async () => {
     try {
       const jobs = await db.query("SELECT * FROM jobs");
+
+      if (jobs.rows.length === 0) {
+        throw Error("No jobs found");
+      }
+      
       return jobs.rows;
     } catch (error) {
       throw Error(error);
