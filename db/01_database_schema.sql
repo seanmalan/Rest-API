@@ -1,7 +1,7 @@
 BEGIN TRANSACTION
 
 CREATE TABLE jobs (
-    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    id SERIAL,
     title TEXT NOT NULL,
     clientName TEXT NOT NULL,
     location TEXT NOT NULL,
@@ -11,5 +11,5 @@ CREATE TABLE jobs (
     clientPhoneNumber TEXT NOT NULL,
     jobStatus TEXT NOT NULL,
     userId INTEGER NOT NULL,
-    JobDate TEXT NOT NULL,
+    JobDate TEXT NOT NULL
 );
