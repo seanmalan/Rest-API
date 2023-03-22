@@ -19,3 +19,15 @@ services:
     volumes:
       - ./api:/app
       - /app/node_modules
+  client:
+    build:
+      context: ./client
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_API_URL=http://api:5001
+    depends_on:
+      - api
+    volumes:
+      - ./client:/app
+      - /app/node_modules
