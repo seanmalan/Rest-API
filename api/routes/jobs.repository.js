@@ -1,3 +1,4 @@
+const { create } = require("domain");
 const db = require("../db");
 
 module.exports = {
@@ -19,10 +20,13 @@ module.exports = {
     }
   },
 
-  getJobsByStatus: async (status) => {
+  createJob: async (job) => {
     try {
-      const jobs = await db.query("SELECT * FROM jobs WHERE jobstatus = $1", [status]);
-      return jobs.rows;
+      const newJob = await db.query(
+        "INSERT INTO jobs (jobtitle, , clientName, location, description, clientPhoneNumber, jobstatus, userId, jobDate) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *",
+        [job.jobtitle, job.clientName, job.location, job.description, job.clientPhoneNumber, job.jobstatus, job.userId, job.jobDate]
+      );
+      return newJob.rows[0];
     } catch (error) {
       throw Error(error);
     }

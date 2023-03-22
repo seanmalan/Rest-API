@@ -14,11 +14,23 @@ router.get("/", async (req, res, next) => {
 router.get("/:id", async (req, res, next) => {
   try {
     const job = await jobsRepository.getJobById(req.params.id);
+    console.log(req.params.id)
     res.send(job).status(200);
   } catch (error) {
     next(error);
   }
 });
+
+router.post("/", async (req, res, next) => {
+  try {
+    const job = await jobsRepository.createJob(req.body);
+    res.send(job).status(201);
+  } catch (error) {
+    next(error);
+  }
+});
+
+
 
 
 // have a route with a variable for the job status
