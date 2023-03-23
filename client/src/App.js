@@ -5,6 +5,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import Header from "./components/Header";
 import JobList from "./components/JobList";
 import Job from "./components/Job";
+import CreateJob from "./components/CreateJob";
 
 function App() {
   const { isLoading } = useAuth0();
@@ -17,15 +18,15 @@ function App() {
     <div className="App">
       <Header />
       <Routes>
-        <Route path="/" element={<JobList />} />
+        <Route path="/jobs" element={<JobList />} />
         <Route path="/jobs/:id" element={<ProtectedRoute />}>
           <Route path="/jobs/:id" element={<Job />} />
         </Route>
 
-        {/* <Route path="/add" element={<ProtectedRoute />}>
+        <Route path="/add" element={<ProtectedRoute />}>
             <Route path="/add" element={<CreateJob />} />
           </Route>
-          <Route path="/jobs/:id/edit" element={<ProtectedRoute />}>
+          {/* <Route path="/jobs/:id/edit" element={<ProtectedRoute />}>
             <Route path="/jobs/:id/edit" element={<EditJob />} />
           </Route> */}
       </Routes>
