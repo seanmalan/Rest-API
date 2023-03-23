@@ -1,7 +1,7 @@
 import "./Header.css";
 import { Link } from "react-router-dom";
 import StrongFencingLogo from "../StrongFencingLogo.jpg";
-// import LoginButton from "./LoginButton";
+import LoginButton from "./LoginButton";
 
 const Header = () => {
   return (
@@ -27,9 +27,9 @@ const Header = () => {
               Create New Job
             </Link>
           </li>
-          {/* <li className="nav-item">
+          <li className="nav-item">
             <LoginButton />
-          </li> */}
+          </li>
         </ul>
       </div>
   );
