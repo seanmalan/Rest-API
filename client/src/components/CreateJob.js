@@ -40,7 +40,7 @@ const CreateJob = () => {
     const accessToken = await getAccessTokenSilently();
 
     const response = await fetch(
-      `${process.env.REACT_APP_API_URL}/jobs`,
+      `https://api-juaz.onrender.com/jobs`,
       {
         method: "POST",
         headers: {
@@ -50,7 +50,7 @@ const CreateJob = () => {
         body: JSON.stringify(reservation),
       },
       []
-    );
+    )
 
     if (!response.ok) {
       setIsError(true);
@@ -149,7 +149,7 @@ const CreateJob = () => {
         {/* job Notes */}
         <div className="form-group">
           <label htmlFor="jobNotes" className="form-name">Job Notes: </label>
-          <textarea rows="4" cols="50" className="form-input" name="jobNotes" required
+          <textarea rows="4" cols="50" className="form-input" name="jobNotes"
           onChange={(event) => {
             setJobNotes(event.target.value);
           }}/>

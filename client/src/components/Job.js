@@ -40,6 +40,8 @@ const Job = () => {
     fetchJob();
   }, [id, getAccessTokenSilently]);
 
+
+  
   if (job === null) {
     setIsNotFound(true);
   }

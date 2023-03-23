@@ -1,16 +1,27 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./JobList.css";
+import { useAuth0 } from "@auth0/auth0-react";
 // import { formatDate } from "../util/formatDate";
 
 const JobList = () => {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isNotFound, setIsNotFound] = useState(false);
+  const { getAccessTokenSilently } = useAuth0();
 
   useEffect(() => {
     const fetchJobs = async () => {
-      const response = await fetch(`https://api-juaz.onrender.com/jobs`);
+      const accessToken = await getAccessTokenSilently();
+      const response = await fetch(`https://api-juaz.onrender.com/jobs`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+
+
 
       if (response.ok === false) {
         setIsNotFound(true);
