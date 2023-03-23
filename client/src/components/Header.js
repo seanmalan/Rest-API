@@ -22,6 +22,12 @@ const Header = () => {
               Jobs
             </Link>
           </li>
+          
+          <li className="nav-item">
+            <Link to="/quote" className="nav-link">
+              Request a Quote
+            </Link>
+          </li>
           <li className="nav-item">
             <Link to="/add" className="nav-link">
               Create New Job

@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import JobList from "./components/JobList";
 import Job from "./components/Job";
 import CreateJob from "./components/CreateJob";
+import QuoteForm from "./components/QuoteForm";
 
 function App() {
   const { isLoading } = useAuth0();
@@ -26,6 +27,9 @@ function App() {
         <Route path="/add" element={<ProtectedRoute />}>
             <Route path="/add" element={<CreateJob />} />
           </Route>
+
+            <Route path="/quote" element={<QuoteForm />} />
+
           {/* <Route path="/jobs/:id/edit" element={<ProtectedRoute />}>
             <Route path="/jobs/:id/edit" element={<EditJob />} />
           </Route> */}

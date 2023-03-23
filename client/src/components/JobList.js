@@ -18,7 +18,7 @@ const JobList = () => {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${accessToken}`,
-        },
+        }, 
       });
 
 
@@ -33,7 +33,7 @@ const JobList = () => {
       setLoading(false);
     };
     fetchJobs();
-  }, []);
+  }, [getAccessTokenSilently]);
 
   if (loading) {
     return <div>Loading...</div>;
