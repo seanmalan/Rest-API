@@ -1,34 +1,33 @@
-import logo from './logo.svg';
-import { Routes, Route } from 'react-router-dom';
-import './App.css';
-import Header from './components/Header';
-import JobList from './components/JobList';
-
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import ProtectedRoute from "./auth/ProtectedRoute";
+import { useAuth0 } from "@auth0/auth0-react";
+import Header from "./components/Header";
+import JobList from "./components/JobList";
+import Job from "./components/Job";
 
 function App() {
+  const { isLoading } = useAuth0();
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
   return (
-
     <div className="App">
-      
-      {/* <header className="App-header">
-        <h1> Hello from the client side</h1>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
-
-<Header />
+      <Header />
       <Routes>
         <Route path="/" element={<JobList />} />
+        <Route path="/jobs/:id" element={<ProtectedRoute />}>
+          <Route path="/jobs/:id" element={<Job />} />
+        </Route>
+
+        {/* <Route path="/add" element={<ProtectedRoute />}>
+            <Route path="/add" element={<CreateJob />} />
+          </Route>
+          <Route path="/jobs/:id/edit" element={<ProtectedRoute />}>
+            <Route path="/jobs/:id/edit" element={<EditJob />} />
+          </Route> */}
       </Routes>
     </div>
   );

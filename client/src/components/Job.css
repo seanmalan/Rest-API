@@ -1,0 +1,17 @@
+.Job-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  
+}
+
+.Job {
+  border: 1px solid black;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f1f1f1;
+  max-width: 50rem;
+  justify-self: center;
+  text-align: center;
+  
+}
