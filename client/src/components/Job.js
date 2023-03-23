@@ -18,7 +18,7 @@ const Job = () => {
       const accessToken = await getAccessTokenSilently();
 
       const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/${id}`,
+        `https://api-juaz.onrender.com/jobs/${id}`,
         {
           headers: {
             "Content-Type": "application/json",
