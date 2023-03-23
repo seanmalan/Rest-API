@@ -3,6 +3,11 @@ const router = express.Router();
 const jobsRepository = require("./jobs.repository");
 const { celebrate, Joi, errors, Segments } = require("celebrate");
 const { auth } = require('express-oauth2-jwt-bearer');
+const { requiredSCopes } = require('express-oauth2-jwt-bearer');
+
+
+const checkReadScopes = requiredSCopes('read:jobs');
+const checkAdminScopes = requiredSCopes('admin:jobs');
 
 
 const jwtCheck = auth({
@@ -23,7 +28,7 @@ const acceptedJobStatuses = [
 
 
 router.post("/",
-jwtCheck,
+jwtCheck, checkAdminScopes,
 celebrate({
   [Segments.BODY]: Joi.object().keys({
     title: Joi.string().required(),

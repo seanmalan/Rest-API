@@ -7,7 +7,7 @@ CREATE TABLE jobs (
     location TEXT NOT NULL,
     description TEXT NOT NULL,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(), 
-  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(), 
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(), 
     clientPhoneNumber TEXT NOT NULL,
     jobStatus TEXT NOT NULL,
     userId INTEGER NOT NULL,

@@ -1,4 +1,3 @@
-const { create } = require("domain");
 const db = require("../db");
 
 module.exports = {
