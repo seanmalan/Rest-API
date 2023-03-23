@@ -1,10 +1,41 @@
-import { useForm } from '@formspree/react';
+import React from 'react';
+import { useForm, ValidationError } from '@formspree/react';
+import DatePicker from "react-datepicker";
+import { Link } from 'react-router-dom';
+
+
 
 function QuoteForm() {
-  const [state, handleSubmit] = useForm('{your-form-id}');
+  const [state, handleSubmit] = useForm("xwkjnnnd");
   if (state.succeeded) {
-    return <div>Thank you for signing up!</div>;
+    
+    
+    
+    
+    console.log(state)
+
+      return (
+      <>
+      
+      <p>Thanks for requesting a quote!
+        We will be in touch shortly to confirm.
+      </p>
+
+      <p>Here are the details you entered:</p>
+
+
+      {/* <p>Name: {state.values.customername}</p>
+      <p>Client Phone Number: {state.values.clientphonenumber}</p>
+      <p>Email: {state.values.email}</p>
+      <p>Location: {state.values.location}</p>
+      <p>Description: {state.values.description}</p>
+      <p>Date: {state.values.date}</p> */}
+
+      <Link to={`/`}> Take me back to the home page </Link>
+      </>
+      );
   }
+
 
   return (
     <section>
@@ -13,34 +44,57 @@ function QuoteForm() {
         <div>
           <label htmlFor="customername">Name:</label>
           <input type="text" name="customername" id="quote" />
-        </div>
-        <div>
-          <label htmlFor="author">Author</label>
-          <input type="text" name="author" id="author" />
-          {/* create the rest of the form for location, description, clientphonenumber, and date */}
-        </div>
-        <div>
-          <label htmlFor="location">Location</label>
-          <input type="text" name="location" id="location" />
-        </div>
-
-        <div>
-          <label htmlFor="description" >Description</label>
-          <input type="textarea" placeholder="Tell us a little something about your job" name="description" cols="30" rows="10" id="description" />
-        </div>
-
+          <ValidationError 
+        prefix="Message" 
+        field="message"
+        errors={state.errors}
+      />
         <div>
           <label htmlFor="clientphonenumber">Client Phone Number</label>
           <input type="text" name="clientphonenumber" id="clientphonenumber" />
         </div>
-
+        </div>
         <div>
-          <label htmlFor="date">Date</label>
-          <input type="text" name="date" id="date" />
+          <label htmlFor="email">Email:</label>
+          <input type="email" name="email" id="email" />
+          <ValidationError 
+        prefix="Email" 
+        field="email"
+        errors={state.errors}
+      />
+          
+        </div>
+        <div>
+          <label htmlFor="location">Location</label>
+          <input type="text" name="location" id="location" />
+          <ValidationError 
+        prefix="Message" 
+        field="message"
+        errors={state.errors}
+      />
         </div>
 
         <div>
-          <button className="btn" type="submit" disabled={state.submitting}>Submit</button>
+          <label htmlFor="description" >Description</label>
+          <textarea placeholder="Tell us a little something about your job" name="description" cols="15" rows="4" id="description" />
+        </div>
+
+        <label htmlFor="description" className="form-name">Date:</label>
+          <DatePicker
+          className="form-input"
+            showTimeSelect
+            minDate={new Date()}
+            name="date"
+            id="date"
+            placeholder={new Date()}
+            dateFormat="dd/MM/yyyy hh:mm aa" 
+          />
+        
+
+        <div>
+        <button type="submit" disabled={state.submitting}>
+        Submit
+      </button>
         </div>
       </form>
     </section>
