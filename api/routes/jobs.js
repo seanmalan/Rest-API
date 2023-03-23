@@ -2,10 +2,14 @@ const express = require("express");
 const router = express.Router();
 const jobsRepository = require("./jobs.repository");
 const { celebrate, Joi, errors, Segments } = require("celebrate");
+const { auth } = require('express-oauth2-jwt-bearer');
 
 
-
-
+const jwtCheck = auth({
+  audience: 'https://strongfencing.com',
+  issuerBaseURL: 'https://dev-8a2dkllk1a5kywvs.us.auth0.com/',
+  tokenSigningAlg: 'RS256'
+});
 
 const acceptedJobStatuses = [
   "Pending",
@@ -19,6 +23,7 @@ const acceptedJobStatuses = [
 
 
 router.post("/",
+jwtCheck,
 celebrate({
   [Segments.BODY]: Joi.object().keys({
     title: Joi.string().required(),
