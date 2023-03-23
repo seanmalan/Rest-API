@@ -137,7 +137,7 @@ const CreateJob = () => {
           onChange={(event) => {
             setJobStatus(event.target.value);
           }}>
-            <option value="To Price ">To Price</option>
+            <option value="Quote">To Quote</option>
             <option value="Pending">Pending</option>
             <option value="Active">Active</option>
             <option value="Completed">Completed</option>
