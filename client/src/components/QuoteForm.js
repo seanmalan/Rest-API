@@ -9,8 +9,6 @@ import { Link } from 'react-router-dom';
 function QuoteForm() {
   const [state, handleSubmit] = useForm("xwkjnnnd");
   if (state.succeeded) {
-    
-  console.log(state.result)
 
 
       return (
