@@ -19,7 +19,9 @@ function App() {
     <div className="App">
       <Header />
       <Routes>
+      <Route path="/jobs" element={<ProtectedRoute />}>
         <Route path="/jobs" element={<JobList />} />
+        </Route>
         <Route path="/jobs/:id" element={<ProtectedRoute />}>
           <Route path="/jobs/:id" element={<Job />} />
         </Route>
